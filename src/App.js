@@ -55,7 +55,7 @@ function App() {
       {prenom}
       {photo}
       <br></br>
-      bonjour : {user.prenom}--{user.prenom}
+      bonjour : {user.prenom}--{user.nom}
       <br></br>
       bonjour : {formatName(user)}
       <br></br>
