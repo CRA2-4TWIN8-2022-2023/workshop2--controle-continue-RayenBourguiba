@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div classNome="App">
-      <h3>Workshop1</h3>
+      <h3>Workshop1: Initiation à JSX</h3>
       {option}
       <div>{x}{y}{z}</div>
       <div>{expression}</div>
@@ -65,7 +65,7 @@ function App() {
       <br></br>
       {listItems}
       <br></br>
-      {max}
+      Max: {max}
       <br></br>
       {tab}
     </div>
