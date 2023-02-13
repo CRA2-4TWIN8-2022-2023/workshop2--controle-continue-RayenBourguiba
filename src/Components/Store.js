@@ -1,4 +1,5 @@
 import React from "react";
+import { Col, Row } from "react-bootstrap";
 import "../App.css";
 import StoreData from "../products.json";
 import HeaderComponent from "./HeaderComponent";
@@ -8,23 +9,23 @@ export const Store = () => {
   return (
     <>
       <HeaderComponent></HeaderComponent>
-      <div className="store-container">
+      <Row className="store-container">
         {StoreData.map((data, key) => {
           return (
-            <div key={key}>
+            <Col key={key}>
               <ProductCard
                 key={key}
                 name={data.name}
                 price={data.price}
                 img={data.img}
-                like={data.img}
+                like={data.like}
                 quantity={data.quantity}
                 description={data.description}
               ></ProductCard>
-            </div>
+            </Col>
           );
         })}
-      </div>
+      </Row>
     </>
   );
 };

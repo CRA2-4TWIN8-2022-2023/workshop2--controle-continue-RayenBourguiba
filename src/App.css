@@ -6,6 +6,13 @@
 
 .store-container {
   padding-left: 3em;
-  padding-right: 3em;
+  padding-right: 3em; 
   margin-top: 3em;
 }
+/* .products-container {
+  width: '100%';
+  align-items: 'center';
+  justify-content: 'center';
+  display: 'flex';
+  flex-direction: 'column'
+} */
