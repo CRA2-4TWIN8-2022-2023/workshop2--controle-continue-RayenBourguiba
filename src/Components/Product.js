@@ -1,49 +1,37 @@
-import { Component } from "react";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import React from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-class Product extends Component {
-  state = {
-    produts: [
-      {
-        name: "PC Lenovo",
-        price: "1400",
-        img: "product1.webp",
-        like: 0,
-        quantity: 10,
-        description:
-          "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page",
-      },
-      {
-        name: "Mouse",
-        price: "30",
-        img: "product2.jpg",
-        like: 0,
-        quantity: 0,
-        description:
-          "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page",
-      },
-      {
-        name: "KeyBoard",
-        price: "70",
-        img: "product3.jpg",
-        like: 0,
-        quantity: 20,
-        description:
-          "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page",
-      },
-    ],
-  };
-  render() {
-    return (
-      <>
-        {this.state.produts.map((p, i) => (
-          <li key={i}>
-            {p.name} -- {p.price}
-          </li>
-        ))}
-      </>
-    );
-  }
-}
+const ProductCard = ({
+  name,
+  price,
+  img,
+  like,
+  quantity,
+  description,
+}) => {
+  if (!name) return <div />;
+  return (
+    <Card style={{ width: "18rem" }}>
+      {/* <Card.Img variant="top" src=``./Assets/images/placeholder.jpg`` /> */}
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>
+          {description} {price} {img} {like} {quantity}
+        </Card.Text>
+        <Row>
+          <Col>
+            <Button variant="primary">Like</Button>
+          </Col>
+          <Col>
+            <Button variant="primary">Buy</Button>
+          </Col>
+        </Row>
+      </Card.Body>
+    </Card>
+  );
+};
 
-export default Product;
+export default ProductCard

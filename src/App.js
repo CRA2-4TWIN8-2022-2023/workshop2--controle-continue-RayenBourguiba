@@ -1,8 +1,6 @@
-import './App.css';
-import React from 'react';
-import CompoasantClass from './Components/ComposantClass';
-import CompoasantFunc from './Components/ComposantFunc';
-import Product from './Components/Product';
+import "./App.css";
+import React from "react";
+import { Store } from "./Components/Store";
 
 // const option = (
 //   <ol>
@@ -37,7 +35,7 @@ import Product from './Components/Product';
 // }
 
 // function disBonjour2(user) {
-//   return (user.prenom=='Rayen') ? (<h1>Hello {formatName(user)} !</h1>) : (<h1>Hello Unknown.</h1>)  
+//   return (user.prenom=='Rayen') ? (<h1>Hello {formatName(user)} !</h1>) : (<h1>Hello Unknown.</h1>)
 // }
 
 // const numbers =[7, 12, 25, 4, 5]
@@ -47,13 +45,12 @@ import Product from './Components/Product';
 // const tab=numbers.filter(v=>v%2==0).map((v,ind)=><li key={ind}>{v*v}</li>)
 
 function App() {
-
   return (
     <div className="App">
-      <CompoasantClass></CompoasantClass>
+      {/* <CompoasantClass></CompoasantClass>
       <br></br>
       <CompoasantFunc></CompoasantFunc>
-      <Product></Product>
+      <Product></Product> */}
       {/* <h3>Workshop1: Initiation à JSX</h3>
       {option}
       <div>{x}{y}{z}</div>
@@ -75,10 +72,8 @@ function App() {
       Max: {max}
       <br></br>
       {tab} */}
+      <Store></Store>{" "}
     </div>
-
-
-    
   );
 }
 
