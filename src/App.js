@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Store } from "./Components/Store";
+import Products from "./Components/Products";
 
 // const option = (
 //   <ol>
@@ -72,7 +72,8 @@ function App() {
       Max: {max}
       <br></br>
       {tab} */}
-      <Store></Store>{" "}
+      {/* <Store></Store>{" "} */}
+      <Products></Products>
     </div>
   );
 }
