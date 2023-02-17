@@ -54,27 +54,47 @@ import { Component } from "react";
 
 // export default ProductCard
 
-class Product extends Component {
-  constructor(props){
+class ProductCorr extends Component {
+  constructor(props) {
     super(props);
-    this.state={
-      product: props.produit
-    }
+    this.state = {
+      product: props.p,
+      like: props.p.like,
+    };
   }
+
+  addLikes = () => {
+    this.setState((prevState) => ({
+      product: {
+        ...prevState.product,
+        like: prevState.product.like + 1,
+      },
+    }));
+  };
+
   render() {
     return (
-      <Card>
-        <Card.Img variant="top" src={require("../Assets/images/" + this.props.produit.img)} />
+      <Card style={{ width: "18rem" }} key={this.props.i}>
+        <Card.Img
+          variant="top"
+          src={require("../Assets/images/" + this.props.p.img)}
+        />
         <Card.Body>
-          <Card.Title>{this.props.produit.name}</Card.Title>
-          <Card.Text>Prix: {this.props.produit.price}</Card.Text>
-          <Card.Text>Quantite: {this.props.produit.quantity}</Card.Text>
-          <Card.Text>Likes: {this.props.produit.like}</Card.Text>
-          <Button variant="primary">Like</Button>
+          <Card.Title>{this.props.p.name}</Card.Title>
+          <Card.Text>{this.props.p.description}</Card.Text>
+          <Card.Text>{this.props.p.price} DT</Card.Text>
+          <Card.Text>Likes : {this.state.product.like} </Card.Text>
+          <Card.Text>Quantity : {this.props.p.quantity} </Card.Text>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Button variant="info" onClick={this.addLikes}>
+              Like
+            </Button>
+            <Button variant="primary">Buy</Button>
+          </div>
         </Card.Body>
       </Card>
     );
   }
 }
 
-export default Product;
+export default ProductCorr;
