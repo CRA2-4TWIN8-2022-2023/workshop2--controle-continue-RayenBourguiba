@@ -1,6 +1,10 @@
 import "./App.css";
 import React from "react";
 import ProductsFunc from "./ComposantFonctionnel/ProductsFunc";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Components/Home";
+import Contact from "./Components/Contact";
+import Acceuil from "./Components/Acceuil";
 
 // const option = (
 //   <ol>
@@ -74,6 +78,12 @@ function App() {
       {tab} */}
       {/* <Store></Store>{" "} */}
       <ProductsFunc />
+      <Routes>
+        <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/contact" element={<Contact></Contact>}></Route>
+        <Route path="/acceuil" element={<Acceuil></Acceuil>}></Route>
+
+      </Routes>
     </div>
   );
 }

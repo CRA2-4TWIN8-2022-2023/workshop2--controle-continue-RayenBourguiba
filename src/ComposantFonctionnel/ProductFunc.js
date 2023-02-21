@@ -16,7 +16,7 @@ function ProductFunc(props) {
     setQuantity(quantity - 1);
   };
 
-  const styleClass= like>5? "bestProduct":"text-center";
+  const styleClass = like > 5 ? "bestProduct" : "text-center";
 
   return (
     <>
@@ -26,7 +26,7 @@ function ProductFunc(props) {
           src={require("../Assets/images/" + props.product.img)}
         />
         <Card.Body>
-          <Card.Title> {props.product.name}</Card.Title>
+          <Card.Title> {props.product.name}</Card.Title>.
           <Card.Text>{props.product.description}</Card.Text>
           <Card.Text> {props.product.price} </Card.Text>
           <Card.Text>Likes :{like}</Card.Text>
