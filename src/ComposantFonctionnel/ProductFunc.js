@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 
 function ProductFunc(props) {
-  const [product, setProduct] = useState(props.product);
+  const [product] = useState(props.product);
   const [like, setLike] = useState(props.product.like);
   const [quantity, setQuantity] = useState(props.product.quantity);
 
