@@ -1,10 +1,11 @@
 import "./App.css";
 import React from "react";
 import ProductsFunc from "./ComposantFonctionnel/ProductsFunc";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import Contact from "./Components/Contact";
 import Acceuil from "./Components/Acceuil";
+import NotFound from "./Components/NotFound";
 
 // const option = (
 //   <ol>
@@ -77,12 +78,26 @@ function App() {
       <br></br>
       {tab} */}
       {/* <Store></Store>{" "} */}
-      <ProductsFunc />
+      {/* <ProductsFunc /> */}
+      <ul>
+        <li>
+          {" "}
+          <Link to="/home">Home</Link>{" "}
+        </li>
+        <li>
+          {" "}
+          <Link to="/acceuil">Acceuil</Link>{" "}
+        </li>
+        <li>
+          {" "}
+          <Link to="/contact/:id">Contact</Link>{" "}
+        </li>
+      </ul>
       <Routes>
-        <Route path="/home" element={<Home></Home>}></Route>
-        <Route path="/contact" element={<Contact></Contact>}></Route>
-        <Route path="/acceuil" element={<Acceuil></Acceuil>}></Route>
-
+        <Route path="/home" element={<Home/>}></Route>
+        <Route path="/contact/:id" element={<Contact/>}></Route>
+        <Route path="/acceuil" element={<Acceuil/>}></Route>
+        <Route path="/*" element={<NotFound/>}></Route>
       </Routes>
     </div>
   );
