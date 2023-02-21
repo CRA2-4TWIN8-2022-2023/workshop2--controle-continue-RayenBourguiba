@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import Products from "./Components/Products";
+import ProductsFunc from "./ComposantFonctionnel/ProductsFunc";
 
 // const option = (
 //   <ol>
@@ -73,7 +73,7 @@ function App() {
       <br></br>
       {tab} */}
       {/* <Store></Store>{" "} */}
-      <Products></Products>
+      <ProductsFunc />
     </div>
   );
 }
