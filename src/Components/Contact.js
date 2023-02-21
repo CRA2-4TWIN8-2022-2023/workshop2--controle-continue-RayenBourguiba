@@ -1,8 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Contact() {
-    const {id}=useParams();
-    return ( <h1>This is Contact page {id}</h1> );
+  const { id } = useParams();
+  const navigate = useNavigate();
+  return (
+    <>
+      <h1>This is Contact page {id}</h1>
+      <button onClick={() => navigate("/home")}>Go Home</button>
+    </>
+  );
 }
 
 export default Contact;
