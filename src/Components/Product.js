@@ -25,7 +25,7 @@ class Product extends Component {
         <Card>
           <Card.Img
             variant="top"
-            src={require("../ssets/images/" + this.state.product.img)}
+            src={require("../Assets/images/" + this.state.product.img)}
           />
           <Card.Body>
             <Card.Title> {this.state.product.name}</Card.Title>

@@ -1,11 +1,17 @@
 import "./App.css";
-import React from "react";
-import ProductsFunc from "./ComposantFonctionnel/ProductsFunc";
+import React, { Suspense } from 'react';
 import { Link, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import Contact from "./Components/Contact";
 import Acceuil from "./Components/Acceuil";
-import NotFound from "./Components/NotFound";
+import PersonList from "./Components/PersonList";
+const ProductsFunc = React.lazy(()=> import('./ComposantFonctionnel/ProductsFunc'))
+const ProductDetails = React.lazy(()=> import('./ComposantFonctionnel/ProductDetails'))
+const NavbarComponent = React.lazy(()=> import('./ComposantFonctionnel/NavigationBar'))
+const NotFound = React.lazy(()=> import('./Components/NotFound'))
+const AddProduct = React.lazy(()=> import('./ComposantFonctionnel/AddProduct'))
+const UpdateProduct = React.lazy(()=> import('./ComposantFonctionnel/UpdateProduct'))
+
 
 // const option = (
 //   <ol>
@@ -79,7 +85,7 @@ function App() {
       {tab} */}
       {/* <Store></Store>{" "} */}
       {/* <ProductsFunc /> */}
-      <ul>
+      {/* <ul>
         <li>
           {" "}
           <Link to="/home">Home</Link>{" "}
@@ -99,6 +105,25 @@ function App() {
         <Route path="/acceuil" element={<Acceuil/>}></Route>
         <Route path="/*" element={<NotFound/>}></Route>
       </Routes>
+      <PersonList></PersonList> */}
+
+      <Suspense fallback={<p>Chargement ...</p>}>
+        <NavbarComponent />
+        <Routes>
+          {/* <Route path="/home" element={<Home/>} ></Route>
+      <Route path="/Contact/:id" element={<Contact/>}></Route>
+      <Route path="/acceuil" element={<Acceuil/>}></Route> */}
+          <Route path="/products">
+            <Route index element={<ProductsFunc />} />
+
+            {/* ProductDetails est un composant fonctionnel ProductDetails qui permet d'afficher un produit selon le nom */}
+            <Route path='/products/:id' element={<ProductDetails />}/>
+            <Route path='add' element={<AddProduct />}/>
+            <Route path='update/:id' element={<UpdateProduct />}/>
+          </Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </Suspense>
     </div>
   );
 }

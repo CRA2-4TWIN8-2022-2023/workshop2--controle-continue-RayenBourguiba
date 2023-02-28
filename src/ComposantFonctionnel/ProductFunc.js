@@ -2,6 +2,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import React from "react";
 import { useState } from "react";
+import { getProductById } from "../service/api";
+import { Link } from "react-router-dom";
 
 function ProductFunc(props) {
   const [product] = useState(props.product);
@@ -26,7 +28,13 @@ function ProductFunc(props) {
           src={require("../Assets/images/" + props.product.img)}
         />
         <Card.Body>
-          <Card.Title> {props.product.name}</Card.Title>.
+          <Card.Title>
+            {/* on va ajouter cette ligne de code  */}
+            <Link to={`/products/${props.product.id}`}>
+              {" "}
+              {props.product.name}
+            </Link>
+          </Card.Title>
           <Card.Text>{props.product.description}</Card.Text>
           <Card.Text> {props.product.price} </Card.Text>
           <Card.Text>Likes :{like}</Card.Text>
@@ -41,6 +49,8 @@ function ProductFunc(props) {
           >
             Buy
           </Button>
+          <Button variant="success" ><Link to={`/products/update/${product.id}`} style={{textDecoration :'none' ,color: 'white'}}>Update Product </Link></Button>
+          <Button variant="danger" onClick={() => props.deleteProd(product.id)}>Delete Product</Button>
         </Card.Body>
       </Card>
     </>
