@@ -15,6 +15,7 @@ function ProductsFunc() {
     if (result) {
       await deleteProduct(id);
       getallProducts();
+      window.location.reload('/products')
     }
   };
 

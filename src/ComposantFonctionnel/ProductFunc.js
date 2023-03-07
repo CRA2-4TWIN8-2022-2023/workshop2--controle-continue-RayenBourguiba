@@ -48,8 +48,8 @@ function ProductFunc(props) {
             disabled={quantity === 0}
           >
             Buy
-          </Button>
-          <Button variant="success" ><Link to={`/products/update/${product.id}`} style={{textDecoration :'none' ,color: 'white'}}>Update Product </Link></Button>
+          </Button>{" "}
+          <Button variant="success" ><Link to={`/products/update/${product.id}`} style={{textDecoration :'none' ,color: 'white'}}>Update Product </Link></Button>{" "}
           <Button variant="danger" onClick={() => props.deleteProd(product.id)}>Delete Product</Button>
         </Card.Body>
       </Card>
