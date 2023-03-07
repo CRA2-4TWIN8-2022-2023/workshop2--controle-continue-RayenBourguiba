@@ -1,17 +1,29 @@
 import "./App.css";
-import React, { Suspense } from 'react';
+import React, { Suspense } from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Home from "./Components/Home";
 import Contact from "./Components/Contact";
 import Acceuil from "./Components/Acceuil";
 import PersonList from "./Components/PersonList";
-const ProductsFunc = React.lazy(()=> import('./ComposantFonctionnel/ProductsFunc'))
-const ProductDetails = React.lazy(()=> import('./ComposantFonctionnel/ProductDetails'))
-const NavbarComponent = React.lazy(()=> import('./ComposantFonctionnel/NavigationBar'))
-const NotFound = React.lazy(()=> import('./Components/NotFound'))
-const AddProduct = React.lazy(()=> import('./ComposantFonctionnel/AddProduct'))
-const UpdateProduct = React.lazy(()=> import('./ComposantFonctionnel/UpdateProduct'))
+import { increment, decrement } from "./reducers/count";
 
+const ProductsFunc = React.lazy(() =>
+  import("./ComposantFonctionnel/ProductsFunc")
+);
+const ProductDetails = React.lazy(() =>
+  import("./ComposantFonctionnel/ProductDetails")
+);
+const NavbarComponent = React.lazy(() =>
+  import("./ComposantFonctionnel/NavigationBar")
+);
+const NotFound = React.lazy(() => import("./Components/NotFound"));
+const AddProduct = React.lazy(() =>
+  import("./ComposantFonctionnel/AddProduct")
+);
+const UpdateProduct = React.lazy(() =>
+  import("./ComposantFonctionnel/UpdateProduct")
+);
 
 // const option = (
 //   <ol>
@@ -56,74 +68,79 @@ const UpdateProduct = React.lazy(()=> import('./ComposantFonctionnel/UpdateProdu
 // const tab=numbers.filter(v=>v%2==0).map((v,ind)=><li key={ind}>{v*v}</li>)
 
 function App() {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrement());
+  };
+
   return (
     <div className="App">
-      {/* <CompoasantClass></CompoasantClass>
-      <br></br>
-      <CompoasantFunc></CompoasantFunc>
-      <Product></Product> */}
-      {/* <h3>Workshop1: Initiation à JSX</h3>
+      {/* <ComposantClass />
+      <ComposantFunct />
+      <Product1 />
+      <Personne/>
+      <Personne nom="test" prenom="ceci est un test" />
+      <Composantcycle /> */}
+
+      {/* <h1 style={myStyle}>Code CSS</h1>
+      {formatName(user)}
+       Ceci un objet
+      {user.lastname} - {user.lastname}
+      Hello 4TWIN8
       {option}
-      <div>{x}{y}{z}</div>
-      <div>{expression}</div>
-      {nom}
-      {prenom}
-      {photo}
-      <br></br>
-      bonjour : {user.prenom}--{user.nom}
-      <br></br>
-      bonjour : {formatName(user)}
-      <br></br>
-      <h1 style={myStyle}>Hello !</h1>
-      {disBonjour(user)}
-      {disBonjour2(user)}
-      <br></br>
-      {listItems}
-      <br></br>
-      Max: {max}
-      <br></br>
-      {tab} */}
-      {/* <Store></Store>{" "} */}
-      {/* <ProductsFunc /> */}
-      {/* <ul>
-        <li>
-          {" "}
-          <Link to="/home">Home</Link>{" "}
-        </li>
-        <li>
-          {" "}
-          <Link to="/acceuil">Acceuil</Link>{" "}
-        </li>
-        <li>
-          {" "}
-          <Link to="/contact/:id">Contact</Link>{" "}
-        </li>
-      </ul>
-      <Routes>
-        <Route path="/home" element={<Home/>}></Route>
-        <Route path="/contact/:id" element={<Contact/>}></Route>
-        <Route path="/acceuil" element={<Acceuil/>}></Route>
-        <Route path="/*" element={<NotFound/>}></Route>
-      </Routes>
-      <PersonList></PersonList> */}
+      la valeur de x est {x}
+      la valeur de y est {y}
+      la valeur de z est {z}
+      la contenu de l'expression est {expression}
+      <br>
+      </br>
 
-      <Suspense fallback={<p>Chargement ...</p>}>
-        <NavbarComponent />
-        <Routes>
-          {/* <Route path="/home" element={<Home/>} ></Route>
-      <Route path="/Contact/:id" element={<Contact/>}></Route>
-      <Route path="/acceuil" element={<Acceuil/>}></Route> */}
-          <Route path="/products">
-            <Route index element={<ProductsFunc />} />
+      Hello {nom} {prenom} {photo} */}
+      {/* 
+            <Navbar bg="light" variant="light">
+                <Container>
+                    <Navbar.Brand >My Store</Navbar.Brand>
+                    <Nav className="me-auto">
+                        <Nav.Link as={NavLink} to="/products" style={({ isActive }) => ({ textDecoration: isActive && 'underline' })}>Products</Nav.Link>
+                        <Nav.Link as={NavLink} to="/products/add"
+                            style={({ isActive }) => ({ textDecoration: isActive && 'underline' })}>Add
+                            Product</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar> */}
 
-            {/* ProductDetails est un composant fonctionnel ProductDetails qui permet d'afficher un produit selon le nom */}
-            <Route path='/products/:id' element={<ProductDetails />}/>
-            <Route path='add' element={<AddProduct />}/>
-            <Route path='update/:id' element={<UpdateProduct />}/>
-          </Route>
-          <Route path="*" element={<NotFound />}></Route>
-        </Routes>
-      </Suspense>
+      {/* <li><Link to="/Accueil/:id">Acceuil</Link></li> */}
+      {/*       
+            <ul>
+                <li><NavLink to="/home">Home</NavLink></li>{""}
+                <li><NavLink to="/Products">Products</NavLink></li>
+            </ul>  */}
+      {/* <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                    <Route path='/products'>
+                        <Route index element={<ProductsFunc />} />
+
+                        <Route path='/products/:id' element={<ProductDetails />} /> </Route>
+
+                    {/* <Route path="/Accueil/:id" reloadDocument={true} element={<Accueil />}></Route> */}
+      {/* <Route path='/products/add' element={<AddProduct />} > </Route>
+
+                    <Route path='/*' element={<NotFound />} > </Route>
+                    <Route path='/products/update/:id' element={<UpdateProduct />}/>
+                </Routes>
+
+            </Suspense> */}
+
+      {/* <PersonList /> */}
+      <h1>Counter: {count}</h1>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
     </div>
   );
 }
